@@ -1,0 +1,41 @@
+{
+  "intents": [
+    {
+      "intent": "ChessMoveIntent",
+      "slots": [
+        {
+          "name": "PositionA",
+          "type": "BOARD_POSITIONS"
+        },
+        {
+          "name": "PositionB",
+          "type": "BOARD_POSITIONS"
+        }
+      ]
+    },
+    {
+      "intent": "NewGameIntent"
+    },
+    {
+      "intent": "ControlLightsIntent",
+      "slots": [
+        {
+          "name": "LightStatus",
+          "type": "LIGHT_STATUS_LIST"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.RepeatIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

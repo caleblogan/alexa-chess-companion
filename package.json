@@ -1,0 +1,22 @@
+{
+  "name": "alexa_chess_companion",
+  "version": "1.0.0",
+  "description": "alexa companion app for the tv fire chess app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "voice",
+    "nlp"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-sdk": "^1.0.7",
+    "dynasty": "^0.2.7",
+    "natural": "^0.5.0",
+    "request": "^2.81.0"
+  }
+}

@@ -1,0 +1,18 @@
+[*] get project setup
+[*] get dynamo db setup
+[*] figure out speech model for chess moves - using nato phonetics
+[*] add the other position slots
+[*] convert raw speech text slots to board positions eg. alpha 1 to a1
+[*] finish lambda move function
+[*] create endpoint for chess move
+[*] have sockets listen and emit moves on userId
+[*] add chessjs for validating moves and keeping state
+  [*] include module and deps
+  [*] get basic api moves working
+[*] Let the user know when his move is invalid
+[*] new game / reset game
+  [*] reset on server and update the db
+  [*] reset client when game is reset on server
+  [*] add voice model
+[*] load game from fen string stored in the db when client is loaded
+[] figure out how authentication and keeping track of users will work with echo userId
