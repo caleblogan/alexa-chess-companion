@@ -30,9 +30,33 @@ module.exports = {
    * @param  {[string]} userId [description]
    * @return [Promise]          [description]
    */
-  newGame: function(userId) {
+  newGame: function(userId, players, color) {
+    let url = `${BASE_URL}/api/new_game?userId=${userId}`
+    if (players) {
+      url += '&players=' + players
+    }
+    if (color) {
+      url += '&color=' + color
+    }
     return new Promise((resolve, reject) => {
-      request.get(`${BASE_URL}/api/new_game?userId=${userId}`)
+      request.get(url)
+          .on('data', data => {
+            resolve(data)
+          })
+          .on('error', err => {
+            reject(data)
+          })
+    })
+  },
+  /**
+   * Resets the games fen keeping the state of color and players
+   * @param  {[type]} userId [description]
+   * @return [type]          [description]
+   */
+  resetGame: function(userId) {
+    let url = `${BASE_URL}/api/reset?userId=${userId}`
+    return new Promise((resolve, reject) => {
+      request.get(url)
           .on('data', data => {
             resolve(data)
           })

@@ -17,11 +17,14 @@
       "intent": "NewGameIntent"
     },
     {
-      "intent": "ControlLightsIntent",
+      "intent": "ResetGameIntent"
+    },
+    {
+      "intent": "ChooseOptionIntent",
       "slots": [
         {
-          "name": "LightStatus",
-          "type": "LIGHT_STATUS_LIST"
+          "name": "Option",
+          "type": "OPTIONS_LIST"
         }
       ]
     },

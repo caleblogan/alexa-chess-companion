@@ -1,39 +1,19 @@
-LookupItemPriceIntent what's the price of the {Item} are
-LookupItemPriceIntent whats the price of the {Item} are
-LookupItemPriceIntent what is the price of the {Item} are
-LookupItemPriceIntent what's the price of {Item} are
-LookupItemPriceIntent whats the price of {Item} are
-LookupItemPriceIntent what is the price of {Item} are
-LookupItemPriceIntent what's the price of the {Item} is
-LookupItemPriceIntent whats the price of the {Item} is
-LookupItemPriceIntent what is the price of the {Item} is
-LookupItemPriceIntent what's the price of {Item} is
-LookupItemPriceIntent whats the price of {Item} is
-LookupItemPriceIntent what is the price of {Item} is
-LookupItemPriceIntent what's the price of the {Item}
-LookupItemPriceIntent whats the price of the {Item}
-LookupItemPriceIntent what is the price of the {Item}
-LookupItemPriceIntent what's the price of {Item}
-LookupItemPriceIntent whats the price of {Item}
-LookupItemPriceIntent what is the price of {Item}
-LookupItemPriceIntent what's the price of a {Item}
-LookupItemPriceIntent whats the price of a {Item}
-LookupItemPriceIntent what is the price of a {Item}
-LookupItemPriceIntent the price of {Item}
-LookupItemPriceIntent price of {Item}
-LookupItemPriceIntent the price of a {Item}
-LookupItemPriceIntent price of a {Item}
-LookupItemPriceIntent the price {Item}
-LookupItemPriceIntent price {Item}
-LookupItemPriceIntent for a {Item}
-LookupItemPriceIntent for {Item}
-LookupItemPriceIntent for the price of the {Item}
-LookupItemPriceIntent for the price of a {Item}
-LookupItemPriceIntent for the price of {Item}
-LookupItemPriceIntent to look up the {Item}
-LookupItemPriceIntent to look up the price of {Item}
-LookupItemPriceIntent to look up the price of a {Item}
-LookupItemPriceIntent to look up {Item}
-LookupItemPriceIntent to search for the price of the {Item}
-LookupItemPriceIntent to search for the price of a {Item}
-LookupItemPriceIntent to search for the price of {Item}
+ChessMoveIntent to move from {PositionA} to {PositionB}
+ChessMoveIntent to move {PositionA} to {PositionB}
+ChessMoveIntent move {PositionA} to {PositionB}
+ChessMoveIntent move to {PositionA} to {PositionB}
+ChessMoveIntent to move to {PositionA} to {PositionB}
+ChessMoveIntent move {PositionA}
+ChessMoveIntent to move {PositionA}
+ChessMoveIntent to move to {PositionA}
+NewGameIntent to create a new game
+NewGameIntent for a new game
+NewGameIntent new game
+ResetGameIntent to reset
+ResetGameIntent to reset game
+ResetGameIntent to reset the game
+ResetGameIntent reset game
+ChooseOptionIntent {Option}
+ChooseOptionIntent {Option} player
+ChooseOptionIntent {Option} players
+ChooseOptionIntent the color {Option}
