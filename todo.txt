@@ -8,12 +8,12 @@
 [*] update new_game endpoint
 [*] add reset endpoint which resets with same config as last game
 [*] add speech interaction model for reset game
-[] change move output speech to => white, a2 to a4
 [*] add dummy ai (have it choose random move for now)
 [*] BUG: added Unhandled intent to the newSessionHandlers
+[*] BUG: Fixed issue where 2 gets mixed up with to and is omitted from PositionA slot
+[*] change move output speech to => white, a2 to a4
 
 
-[] lambda change out dynamo for postgresql
 [] figure out how authentication and keeping track of users will work with echo userId
 [] work on move utterance/slots
 [] update help intents speechOutput

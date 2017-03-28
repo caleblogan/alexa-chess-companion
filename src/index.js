@@ -3,10 +3,17 @@ const Alexa = require('alexa-sdk')
 const request = require('request')
 
 // const db = require('./database_helper')
-const config = require('./config.json')
 const chesshelper = require('./chesshelper')
 
-const APP_ID = config['APP_ID']
+let config
+try {
+  config = require('../../alexa_chess_companion_config.json')
+} catch(e) {
+  console.log('Cant find config file. using env variables')
+  config = process.env
+}
+
+const APP_ID = config['appId']
 
 const states = {
   NEW_GAME_CHOOSE_PLAYERS: '_NEW_GAME_CHOOSE_PLAYERS',
@@ -70,7 +77,7 @@ const newSessionHandlers = {
           if (data['error']) {
             this.emit(':tellWithCard', 'Sorry, but that move is invalid', cardTitle, cardText)
           } else {
-            speechText = chesshelper.buildMoveSpeechResponse(data['move'], data['aiMove'])
+            speechText = chesshelper.buildSpeechMoveResponse(data['move'], data['aiMove'])
             this.emit(':tellWithCard', speechText, cardTitle, cardText)
           }
         })

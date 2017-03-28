@@ -4,7 +4,16 @@ const request = require('request')
 
 const board_positions_dict = require('./board_positions')
 
-const BASE_URL = 'http://99.198.59.71:3000'
+let config
+try {
+  config = require('../../alexa_chess_companion_config.json')
+} catch(e) {
+  console.log('Cant find config file. using env variables')
+  config = process.env
+}
+
+const HOST = config['host']
+const PORT = config['port']
 
 module.exports = {
   /**
@@ -15,7 +24,7 @@ module.exports = {
    */
   move: function(from, to, userId) {
     return new Promise((resolve, reject) => {
-      request.get(`${BASE_URL}/api/move?from=${from}&to=${to}&userId=${userId}`)
+      request.get(`${HOST}:${PORT}/api/move?from=${from}&to=${to}&userId=${userId}`)
           .on('data', data => {
             resolve(data)
           })
@@ -31,7 +40,7 @@ module.exports = {
    * @return [Promise]          [description]
    */
   newGame: function(userId, players, color) {
-    let url = `${BASE_URL}/api/new_game?userId=${userId}`
+    let url = `${HOST}:${PORT}/api/new_game?userId=${userId}`
     if (players) {
       url += '&players=' + players
     }
@@ -54,7 +63,7 @@ module.exports = {
    * @return [type]          [description]
    */
   resetGame: function(userId) {
-    let url = `${BASE_URL}/api/reset?userId=${userId}`
+    let url = `${HOST}:${PORT}/api/reset?userId=${userId}`
     return new Promise((resolve, reject) => {
       request.get(url)
           .on('data', data => {
@@ -68,6 +77,7 @@ module.exports = {
   /**
    * Converts a speechPosition like alpha 1 to a1
    * Returns empty string if speechPosition is undefined
+   * Does a lot of hacky shit to get the best match to users speech
    * @param  {string} speechPosition [description]
    * @return  [string]                 chessboard position eg. a1, b2, b8
    */
@@ -78,8 +88,35 @@ module.exports = {
     speechPosition = speechPosition.replace('from', '')
     speechPosition = speechPosition.replace('for', '4')
     speechPosition = speechPosition.replace('to', '2')
+
+    // 2 gets mixed up with the to in the utterances
+    // and then gets omitted from the slot PositionA
+    if (speechPosition.search(/[1-8]/) === -1) {
+      speechPosition += ' 2'
+    }
+    console.log('speechPosition:', speechPosition)
     let boardPosition = fuzzymatch(board_positions_dict, speechPosition)
     return boardPosition
+  },
+  /**
+   * Takes in a required moveA and possibly moveB and returns a speech
+   * response in the form of [color], [form]-[to]
+   * @param  {[type]} moveA [description]
+   * @param  {[type]} moveB [description]
+   * @return [type]         [description]
+   */
+  buildSpeechMoveResponse: function(moveA, moveB) {
+    let speechResponse = ''
+    speechResponse += moveA.color === 'w' ? 'white, ' : 'black, '
+    speechResponse += '<break time="300ms"/>'
+    speechResponse += moveA.from + ' to ' + moveA.to
+    if (moveB) {
+      speechResponse += '\n <break time="400ms"/>'
+      speechResponse += moveB.color === 'w' ? 'white, ' : 'black, '
+      speechResponse += '<break time="300ms"/>'
+      speechResponse += moveB.from + ' to ' + moveB.to
+    }
+    return speechResponse
   }
 }
 
